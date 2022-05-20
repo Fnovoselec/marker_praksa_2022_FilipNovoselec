@@ -25,12 +25,16 @@ Route::get('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class,
 /* {blogPOst} = wildcard, znaci da ce {blogPost}biti zamjenjen sa  napisanim poslije blog /  vrijednost se sprema u varijablu nazvanu $blogPost */
 
 
-Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); //prikaz forme za kreiranje posta
+Route::get('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'create']); // prikaz forme za kreiranje posta
+
 
 Route::post('/blog/create/post', [\App\Http\Controllers\BlogPostController::class, 'store']); //sprema kreirani post u DB
 
+
 Route ::get('/blog/{blogPost}/edit', [\App\Http\Controllers\BlogPostController::class, 'edit']); // prikaz forme za edit posta
 
+
 Route::put('/blog/{blogPost}/edit',[\App\Http\Controllers\BlogPostController::class, 'update']); //sprema editiran post u DB
+
 
 Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //brise post iz DB

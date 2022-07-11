@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\BlogPost;
 use Illuminate\Http\Request;
+use Illuminate\Support\Str;
 
 class BlogPostController extends Controller
 {
@@ -14,6 +15,7 @@ class BlogPostController extends Controller
      */
     public function index()
     {
+       
         $posts=BlogPost::all(); // dohvati sve blog postove iz DB
         return view('blog.index',[
             'posts'=>$posts,
@@ -41,9 +43,10 @@ class BlogPostController extends Controller
     public function store(Request $request)
     {   
         $newPost=BlogPost::create([
-            'title'=>$request->title,
+            'title'=>$request->title=Str::limit($request->title,50),
             'body'=>$request->body,
-            'user_id'=>1
+            'user_id'=>1,
+            'started_at'=>$request->started_at
         ]);
 
         return redirect('blog/'. $newPost->id);
@@ -78,6 +81,10 @@ class BlogPostController extends Controller
     }
 
     /**
+
+
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -107,4 +114,6 @@ class BlogPostController extends Controller
         return redirect('/blog');
         //brisanje posta
     }
+
+    
 }

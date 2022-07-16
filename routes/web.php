@@ -38,3 +38,5 @@ Route::put('/blog/{blogPost}/edit',[\App\Http\Controllers\BlogPostController::cl
 
 
 Route::delete('/blog/{blogPost}', [\App\Http\Controllers\BlogPostController::class, 'destroy']); //brise post iz DB
+
+
